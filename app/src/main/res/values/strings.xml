@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Declarations Ukraine</string>
+
+    <string name="empty_work_position">ні</string>
+    <string name="not_found">Не знайдено</string>
+    <string name="search">Пошук</string>
+    <string name="search_request">Запит (ПІБ)</string>
+    <string name="error">Помилка</string>
+    <string name="empty_request">Пустий запит</string>
+</resources>
