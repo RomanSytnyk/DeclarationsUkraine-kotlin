@@ -9,6 +9,5 @@ Libraries:
 
 - Android Support Library
 - Moxy (MVP)
-- RxJava 2
-- Retrofit 2
+- Retrofit 2 + Coroutines Adapter
 - Dagger 2

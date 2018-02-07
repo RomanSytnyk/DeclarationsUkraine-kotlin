@@ -3,7 +3,7 @@ package com.riko.declarations_ukraine.data
 import com.riko.declarations_ukraine.App
 import com.riko.declarations_ukraine.data.api.NazkApi
 import com.riko.declarations_ukraine.data.api.model.DeclarationList
-import io.reactivex.Observable
+import kotlinx.coroutines.experimental.Deferred
 import okhttp3.ResponseBody
 import retrofit2.Response
 import javax.inject.Inject
@@ -19,11 +19,11 @@ class DataManager : IDataManager {
         App.dataManagerComponent.inject(this)
     }
 
-    override fun search(query: String): Observable<Response<DeclarationList>> {
+    override fun search(query: String): Deferred<Response<DeclarationList>> {
         return nazkApi.search(query)
     }
 
-    override fun downloadDeclaration(url: String): Observable<Response<ResponseBody>> {
+    override fun downloadDeclaration(url: String): Deferred<Response<ResponseBody>> {
         return nazkApi.downloadDeclaration(url)
     }
 }

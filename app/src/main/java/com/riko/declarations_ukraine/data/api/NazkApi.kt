@@ -2,7 +2,7 @@ package com.riko.declarations_ukraine.data.api
 
 import com.riko.declarations_ukraine.data.api.core.Requests
 import com.riko.declarations_ukraine.data.api.model.DeclarationList
-import io.reactivex.Observable
+import kotlinx.coroutines.experimental.Deferred
 import okhttp3.ResponseBody
 import retrofit2.Response
 
@@ -14,11 +14,11 @@ class NazkApi(private val requests: Requests) : INazkApi {
         const val REQUEST_SEARCH_DECLARATION = "/v1/declaration/"
     }
 
-    override fun search(query: String): Observable<Response<DeclarationList>> {
+    override fun search(query: String): Deferred<Response<DeclarationList>> {
         return requests.searchDeclaration(query)
     }
 
-    override fun downloadDeclaration(url: String): Observable<Response<ResponseBody>> {
+    override fun downloadDeclaration(url: String): Deferred<Response<ResponseBody>> {
         return requests.downloadDeclaration(url)
     }
 }

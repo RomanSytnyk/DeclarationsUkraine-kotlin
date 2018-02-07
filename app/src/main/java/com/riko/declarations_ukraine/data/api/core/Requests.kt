@@ -2,7 +2,7 @@ package com.riko.declarations_ukraine.data.api.core
 
 import com.riko.declarations_ukraine.data.api.NazkApi
 import com.riko.declarations_ukraine.data.api.model.DeclarationList
-import io.reactivex.Observable
+import kotlinx.coroutines.experimental.Deferred
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -14,8 +14,8 @@ import okhttp3.ResponseBody
  */
 interface Requests {
     @GET(NazkApi.REQUEST_SEARCH_DECLARATION)
-    fun searchDeclaration(@Query("q") query: String): Observable<Response<DeclarationList>>
+    fun searchDeclaration(@Query("q") query: String): Deferred<Response<DeclarationList>>
 
     @GET
-    fun downloadDeclaration(@Url fileUrl: String): Observable<Response<ResponseBody>>
+    fun downloadDeclaration(@Url fileUrl: String): Deferred<Response<ResponseBody>>
 }
