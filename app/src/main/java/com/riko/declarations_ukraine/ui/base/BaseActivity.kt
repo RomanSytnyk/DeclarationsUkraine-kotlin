@@ -51,7 +51,7 @@ abstract class BaseActivity : MvpAppCompatActivity() {
         val current: Locale
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             // Android N can have a few locales
-            current = resources.configuration.getLocales().get(0)
+            current = resources.configuration.locales.get(0)
         } else {
             current = resources.configuration.locale
         }
