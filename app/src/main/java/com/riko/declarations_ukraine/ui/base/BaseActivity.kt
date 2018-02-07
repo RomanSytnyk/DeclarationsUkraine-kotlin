@@ -1,9 +1,7 @@
 package com.riko.declarations_ukraine.ui.base
 
-import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
-import android.support.annotation.IdRes
 import android.support.annotation.StringRes
 import android.support.design.widget.Snackbar
 import android.view.View
@@ -18,22 +16,11 @@ import java.util.*
  */
 
 abstract class BaseActivity : MvpAppCompatActivity() {
-    private lateinit var dialog: ProgressDialog
     private lateinit var rootView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        dialog = ProgressDialog(this)
-        dialog.setCancelable(false)
-        dialog.setCanceledOnTouchOutside(false)
-
-        rootView = bind(android.R.id.content)
-    }
-
-    @Suppress("UNCHECKED_CAST")
-    fun <V : View> bind(@IdRes id: Int): V {
-        return findViewById(id) as V
+        rootView = findViewById(android.R.id.content)
     }
 
     fun showToast(msg: String) {
@@ -52,18 +39,6 @@ abstract class BaseActivity : MvpAppCompatActivity() {
         Snackbar.make(rootView, id, Snackbar.LENGTH_SHORT).show()
     }
 
-    fun showProgress() {
-        try {
-            dialog.show()
-        } catch (ignore: IllegalArgumentException) { }
-    }
-
-    fun hideProgress() {
-        try {
-            dialog.dismiss()
-        } catch (ignore: IllegalArgumentException) { }
-    }
-
     fun hideSoftKeyboard() {
         if (currentFocus != null) {
             val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -76,9 +51,9 @@ abstract class BaseActivity : MvpAppCompatActivity() {
         val current: Locale
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             // Android N can have a few locales
-            current = getResources().getConfiguration().getLocales().get(0)
+            current = resources.configuration.getLocales().get(0)
         } else {
-            current = getResources().getConfiguration().locale
+            current = resources.configuration.locale
         }
 
         return current

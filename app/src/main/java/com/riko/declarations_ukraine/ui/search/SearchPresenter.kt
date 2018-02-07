@@ -14,8 +14,7 @@ import javax.inject.Inject
  */
 @InjectViewState
 class SearchPresenter : MvpPresenter<ISearchView>(), ISearchPresenter {
-    @Inject
-    lateinit var dataManager: DataManager
+    @Inject lateinit var dataManager: DataManager
     private val disposable = CompositeDisposable()
 
     init {
@@ -23,13 +22,11 @@ class SearchPresenter : MvpPresenter<ISearchView>(), ISearchPresenter {
     }
 
     override fun search(query: String) {
-        viewState.showProgress()
         disposable.add(dataManager.nazkApi.search(query)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         { response ->
-                            viewState.hideProgress()
                             if(response.body()?.items == null) {
                                 viewState.showNotFoundToast()
                                 viewState.finish()
@@ -38,7 +35,6 @@ class SearchPresenter : MvpPresenter<ISearchView>(), ISearchPresenter {
 
                         }, { e ->
                             e.printStackTrace()
-                            viewState.hideProgress()
                             viewState.showErrorToast()
                             viewState.finish()
                         }))

@@ -10,6 +10,4 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 interface BaseMvpView : MvpView {
     @StateStrategyType(OneExecutionStateStrategy::class) fun showToast(msg: String)
     @StateStrategyType(OneExecutionStateStrategy::class) fun showSnackbar(msg: String)
-    @StateStrategyType(OneExecutionStateStrategy::class) fun showProgress()
-    @StateStrategyType(OneExecutionStateStrategy::class) fun hideProgress()
 }

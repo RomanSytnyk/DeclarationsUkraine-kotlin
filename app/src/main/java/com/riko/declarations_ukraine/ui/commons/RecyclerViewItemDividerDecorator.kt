@@ -12,11 +12,7 @@ import com.riko.declarations_ukraine.R
  * Created by Roman on 11.07.2017
  */
 class RecyclerViewItemDividerDecorator(context: Context) : RecyclerView.ItemDecoration() {
-    private val mDivider: Drawable
-
-    init {
-        mDivider = ContextCompat.getDrawable(context, R.drawable.recyclerview_divider)
-    }
+    private val mDivider: Drawable? = ContextCompat.getDrawable(context, R.drawable.recyclerview_divider)
 
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         val left = parent.paddingLeft
@@ -29,10 +25,10 @@ class RecyclerViewItemDividerDecorator(context: Context) : RecyclerView.ItemDeco
             val params = child.layoutParams as RecyclerView.LayoutParams
 
             val top = child.bottom + params.bottomMargin
-            val bottom = top + mDivider.intrinsicHeight
+            val bottom = top + (mDivider?.intrinsicHeight ?: 0)
 
-            mDivider.setBounds(left + 16, top, right - 16, bottom)
-            mDivider.draw(c)
+            mDivider?.setBounds(left + 16, top, right - 16, bottom)
+            mDivider?.draw(c)
         }
     }
 }

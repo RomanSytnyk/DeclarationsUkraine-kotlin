@@ -32,9 +32,9 @@ class SearchAdapter(private val decList: DeclarationList, private val decClick: 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         @SuppressLint("SetTextI18n")
         fun fillWith(item: DeclarationItem) {
-            val name = itemView.findViewById(R.id.name) as TextView
-            val work = itemView.findViewById(R.id.place_of_work) as TextView
-            val position = itemView.findViewById(R.id.work_position) as TextView
+            val name: TextView = itemView.findViewById(R.id.name)
+            val work: TextView = itemView.findViewById(R.id.place_of_work)
+            val position: TextView = itemView.findViewById(R.id.work_position)
 
 
             val emptyWorkPosition = itemView.context.getString(R.string.empty_work_position)
