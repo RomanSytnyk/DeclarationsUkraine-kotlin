@@ -36,11 +36,16 @@ class SearchAdapter(private val decList: DeclarationList, private val decClick: 
             val work: TextView = itemView.findViewById(R.id.place_of_work)
             val position: TextView = itemView.findViewById(R.id.work_position)
 
-
-            val emptyWorkPosition = itemView.context.getString(R.string.empty_work_position)
             name.text = item.lastName + " " + item.firstName
             work.text = item.placeOfWork
-            position.text = if (item.position == emptyWorkPosition) "" else item.position
+
+            val emptyWorkPosition = itemView.context.getString(R.string.empty_work_position)
+            if (item.position == emptyWorkPosition) {
+                position.visibility = View.GONE
+            } else {
+                position.text = item.position
+                position.visibility = View.VISIBLE
+            }
 
             itemView.setOnClickListener { decClick.onDeclarationClicked(item.linkPdf) }
         }

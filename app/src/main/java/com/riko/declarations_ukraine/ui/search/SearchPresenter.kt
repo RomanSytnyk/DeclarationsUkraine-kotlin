@@ -4,8 +4,9 @@ import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.riko.declarations_ukraine.App
 import com.riko.declarations_ukraine.data.DataManager
-import kotlinx.coroutines.experimental.android.UI
+import com.riko.declarations_ukraine.ui.common.CoroutineContextProvider
 import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.experimental.withContext
 import javax.inject.Inject
 
 /**
@@ -14,15 +15,18 @@ import javax.inject.Inject
 @InjectViewState
 class SearchPresenter : MvpPresenter<ISearchView>(), ISearchPresenter {
     @Inject lateinit var dataManager: DataManager
+    @Inject lateinit var coroutineContextPool: CoroutineContextProvider
 
     init {
         App.presenterComponent.inject(this)
     }
 
     override fun search(query: String) {
-        async(UI) {
+        async(coroutineContextPool.UI) {
             try {
-                val response = dataManager.nazkApi.search(query).await()
+                val response = withContext(coroutineContextPool.IO) {
+                    dataManager.nazkApi.search(query).await()
+                }
                 if (response.body()?.items == null) {
                     viewState.showNotFoundToast()
                     viewState.finish()

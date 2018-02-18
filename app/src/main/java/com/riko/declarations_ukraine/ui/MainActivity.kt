@@ -6,6 +6,10 @@ import com.riko.declarations_ukraine.R
 import com.riko.declarations_ukraine.ui.base.BaseActivity
 import com.riko.declarations_ukraine.ui.search.SearchActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
+
+
 
 /**
  * Created by Roman on 10.07.2017
@@ -17,13 +21,21 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        search_button.setOnClickListener {
-            if (search_field.text.isEmpty()) {
+        searchButton.setOnClickListener {
+            if (search.text.isEmpty()) {
                 showToast(R.string.empty_request)
             } else {
-                SearchActivity.start(this, search_field.text.toString())
+                SearchActivity.start(this, search.text.toString())
             }
         }
+
+        search.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                searchButton.performClick()
+                return@OnEditorActionListener true
+            }
+            false
+        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

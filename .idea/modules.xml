@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/DeclarationsUkraine-kotlin.iml" filepath="$PROJECT_DIR$/.idea/DeclarationsUkraine-kotlin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/DeclarationsUkraine_git.iml" filepath="$PROJECT_DIR$/DeclarationsUkraine_git.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DeclarationsUkraine-kotlin.iml" filepath="$PROJECT_DIR$/DeclarationsUkraine-kotlin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

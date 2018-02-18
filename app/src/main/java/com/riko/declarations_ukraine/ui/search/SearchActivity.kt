@@ -10,7 +10,6 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.riko.declarations_ukraine.R
 import com.riko.declarations_ukraine.data.api.model.DeclarationList
 import com.riko.declarations_ukraine.ui.base.BaseActivity
-import com.riko.declarations_ukraine.ui.commons.RecyclerViewItemDividerDecorator
 import com.riko.declarations_ukraine.ui.search.adapter.IDeclarationClick
 import com.riko.declarations_ukraine.ui.search.adapter.SearchAdapter
 import kotlinx.android.synthetic.main.activity_search.*
@@ -51,7 +50,6 @@ class SearchActivity : BaseActivity(), ISearchView, IDeclarationClick {
             return
         }
 
-        declarations.addItemDecoration(RecyclerViewItemDividerDecorator(this))
         declarations.layoutManager = LinearLayoutManager(this)
         declarations.adapter = SearchAdapter(list, this)
     }

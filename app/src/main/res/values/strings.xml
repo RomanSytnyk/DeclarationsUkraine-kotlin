@@ -7,4 +7,5 @@
     <string name="search_request">Запит (ПІБ)</string>
     <string name="error">Помилка</string>
     <string name="empty_request">Пустий запит</string>
+    <string name="description">ЄДИНИЙ ДЕРЖАВНИЙ РЕЄСТР ДЕКЛАРАЦІЙ\nОсіб, уповноважених на виконання функцій держави або місцевого самоврядування</string>
 </resources>
