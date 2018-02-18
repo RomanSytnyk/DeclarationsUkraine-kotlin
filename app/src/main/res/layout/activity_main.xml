@@ -37,7 +37,7 @@
             android:ems="10"
             android:hint="@string/search_request"
             android:imeOptions="actionSearch"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName|textCapWords" />
     </android.support.design.widget.TextInputLayout>
 
 
